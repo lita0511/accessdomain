@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 import data.nameData;
+import notification_bot.VipTalkBotService;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.testng.annotations.Test;
@@ -16,14 +16,13 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 
 import SwitchNetwork.switchnetwork;
-import telegrambots.notifyBot;
 
 public class GetRequestAutomation {
 
 	public static Properties prop;
 
 	nameData data = new nameData();
-	notifyBot bot = new notifyBot();
+	VipTalkBotService vipTalkBotService = new VipTalkBotService("src/main/java/configs/notification.properties");
 	switchnetwork wifi = new switchnetwork();
 
 	@Test
@@ -74,12 +73,12 @@ public class GetRequestAutomation {
 					}
 					else{
 						System.out.println(url + "    ------Status Code: " + stt);
-						bot.sendMsg(url + "    ------ Status Code: " + stt + "    ------ Access Failed on " + x.toUpperCase());
+						vipTalkBotService.send(url + "    ------ Status Code: " + stt + "    ------ Access Failed on " + x.toUpperCase());
 					}
 				}
 				catch(Exception e){
 					System.out.println("Access Failed");
-					bot.sendMsg(url + "    ------ Access Failed " + e);
+					vipTalkBotService.send(url + "    ------ Access Failed " + e);
 				}
 			}
 			System.out.println("========================================================================\n");

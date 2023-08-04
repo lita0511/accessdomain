@@ -1,4 +1,4 @@
-package telegrambots;
+package notification_bot;
 
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
