@@ -17,6 +17,8 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 import SwitchNetwork.switchnetwork;
 
+import static java.lang.String.format;
+
 public class GetRequestAutomation {
 
 	public static Properties prop;
@@ -78,8 +80,8 @@ public class GetRequestAutomation {
 					}
 				}
 				catch(Exception e){
-					System.out.println("Exception occurred: " + e.getMessage());
-					vipTalkBotService.send(url + "    ------ Exception occurred: " + e);
+					System.out.printf("URL: %s, network: %s, exception: %s%n", url, x, e.getMessage());
+					vipTalkBotService.send(format("%s    ------ network: %s, exception occurred: %s", url, x, e));
 				} finally {
 					try {
 						client.close();
