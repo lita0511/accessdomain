@@ -77,8 +77,10 @@ public class GetRequestAutomation {
 					}
 				}
 				catch(Exception e){
-					System.out.println("Access Failed");
-					vipTalkBotService.send(url + "    ------ Access Failed " + e);
+					System.out.println("Exception occurred: " + e.getMessage());
+					vipTalkBotService.send(url + "    ------ Exception occurred: " + e);
+				} finally {
+					client.close();
 				}
 			}
 			System.out.println("========================================================================\n");
