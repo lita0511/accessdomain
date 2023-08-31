@@ -80,7 +80,12 @@ public class GetRequestAutomation {
 					System.out.println("Exception occurred: " + e.getMessage());
 					vipTalkBotService.send(url + "    ------ Exception occurred: " + e);
 				} finally {
-					client.close();
+					try {
+						client.close();
+					} catch (Exception e) {
+						System.out.println("Cannot close resource.");
+						vipTalkBotService.send(url + "    ------ Cannot close resource.");
+					}
 				}
 			}
 			System.out.println("========================================================================\n");
