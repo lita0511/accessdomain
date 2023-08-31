@@ -28,6 +28,7 @@ public class GetRequestAutomation {
 	@Test
 	public void ApiTesting() throws IOException, InterruptedException {
 		System.setProperty("https.protocols", "TLSv1,TLSv1.1,TLSv1.2");
+		System.setProperty("javax.net.debug", "ssl:handshake");
 		prop = new Properties();
 		FileInputStream fis = new FileInputStream("src/main/java/configs/URL.properties");
 		prop.load(fis);
